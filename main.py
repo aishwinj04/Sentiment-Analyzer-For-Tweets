@@ -1,6 +1,7 @@
-import errno
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
+import pandas as df
+
 
 def get_tweet(term):
 
@@ -14,9 +15,22 @@ def get_tweet(term):
 
 
 tweets_list = get_tweet('apple')
-print(tweets_list)
+series = df.Series(tweets_list)
+# print(series)
 
 
+def analyzer(series):
+    analyzer = SentimentIntensityAnalyzer()
+    compound_list = []
+    for tweet in series:
+        analyze = analyzer.polarity_scores(tweet)
+        compound = analyze['compound']
+        compound_list.append(compound)
+    
+    return compound_list
+
+
+   
 
 # analyzer = SentimentIntensityAnalyzer()
 
