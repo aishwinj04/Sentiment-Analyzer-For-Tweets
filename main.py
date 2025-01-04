@@ -1,16 +1,20 @@
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 import pandas as df
+import re
 
 # if not locally downloaded uncomment
 # nltk.download('vader_lexicon')
 # nltk.download('twitter_samples')
 
 def get_tweet(term):
-
     matched_tweets = []
     tweets = nltk.corpus.twitter_samples.strings()
+    username_pattern = r'@[\w]+' # ignore usernames in tweets
+
     for tweet in tweets:
+        #swap usernames with @
+        tweet = re.sub(username_pattern,'@',tweet)
         if term.lower() in tweet.lower(): # match regardless of case
             matched_tweets.append(tweet)
 
@@ -50,7 +54,7 @@ def main():
         # for organization pandas
         series = df.Series(matched_tweets)
         df.set_option('display.max_colwidth', None)
-        # print(series) 
+        print(series) 
 
         scores = analyzer(series)
         average = check_score(scores)
