@@ -15,4 +15,4 @@ Download NLTK Resources:
 
 
 ## Example
-** Enter search term to match for in tweets: Python
+**Enter search term to match for in tweets: Apple**
