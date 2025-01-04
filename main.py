@@ -8,15 +8,10 @@ def get_tweet(term):
     matched_tweets = []
     tweets = nltk.corpus.twitter_samples.strings()
     for tweet in tweets:
-        if term.lower() in tweet.lower():
+        if term.lower() in tweet.lower(): # match regardless of case
             matched_tweets.append(tweet)
 
     return matched_tweets
-
-
-tweets_list = get_tweet('apple')
-series = df.Series(tweets_list)
-# print(series)
 
 
 def analyzer(series):
@@ -30,11 +25,7 @@ def analyzer(series):
     return compound_list
 
 
-lst = analyzer(series)
-print(lst)
-
-
-def check_score(compound_list, length):
+def check_score(compound_list):
     total = 0
     for compound in compound_list:
         total += compound
@@ -42,25 +33,38 @@ def check_score(compound_list, length):
     return total
 
 
-value = check_score(lst, len(series))
-print(value)
-if ()
+def main():
+    search_term = input('Enter search term to match for in tweets: ')
+    matched_tweets = get_tweet(search_term)
+
+    # print(matched_tweets)
+    
+    if not matched_tweets:
+        print('No matching tweet with that term')
+    else:
+        series = df.Series(matched_tweets)
+        df.set_option('display.max_colwidth', None)
+        print(series) # for visual
+        
+
+        scores = analyzer(series)
+        total = check_score(scores)
+
+        # score more than 0 indicates positive outlook 
+        if(total > 0):
+            print('Positive Response')
+        else:
+            print('Negative Response')
+
+        # print(total)
+
+
+if __name__ == '__main__':
+    main()
+
+
+
    
 
-# analyzer = SentimentIntensityAnalyzer()
 
-# text1 = 'Hey, what a beautiful day! How amazing it is!'
-# analyze = analyzer.polarity_scores(text1) # get coef
-# print(analyze)
-# print(type(analyze))
-
-# # access compound key of dict
-# compound = analyze['compound']
-# print(compound)
-
-# # output message
-# if compound > 0:
-#     print('Positive')
-# else:
-#     print('Negative')
 
