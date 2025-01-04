@@ -2,7 +2,7 @@ import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 import pandas as df
 
-# if not locally downloaded
+# if not locally downloaded uncomment
 # nltk.download('vader_lexicon')
 # nltk.download('twitter_samples')
 
@@ -33,7 +33,8 @@ def check_score(compound_list):
     for compound in compound_list:
         total += compound
 
-    return total
+    average = total/len(compound_list)
+    return average
 
 
 def main():
@@ -52,15 +53,16 @@ def main():
         # print(series) 
 
         scores = analyzer(series)
-        total = check_score(scores)
+        average = check_score(scores)
 
         # score more than 0 indicates positive outlook 
-        if(total > 0):
-            print('Positive Response')
+        if(average > 0):
+            print(f'Positive Response ({average})')
+        elif(average < 0):
+            print(f'Negative Response ({average})')
         else:
-            print('Negative Response')
+            print(f'Neutral Response ({average})')
 
-        # print(total)
 
 
 if __name__ == '__main__':
