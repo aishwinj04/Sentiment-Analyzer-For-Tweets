@@ -30,6 +30,21 @@ def analyzer(series):
     return compound_list
 
 
+lst = analyzer(series)
+print(lst)
+
+
+def check_score(compound_list, length):
+    total = 0
+    for compound in compound_list:
+        total += compound
+
+    return total
+
+
+value = check_score(lst, len(series))
+print(value)
+if ()
    
 
 # analyzer = SentimentIntensityAnalyzer()
