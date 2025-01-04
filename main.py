@@ -2,6 +2,9 @@ import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 import pandas as df
 
+# if not locally downloaded
+# nltk.download('vader_lexicon')
+# nltk.download('twitter_samples')
 
 def get_tweet(term):
 
@@ -42,10 +45,11 @@ def main():
     if not matched_tweets:
         print('No matching tweet with that term')
     else:
+
+        # for organization pandas
         series = df.Series(matched_tweets)
         df.set_option('display.max_colwidth', None)
-        print(series) # for visual
-        
+        # print(series) 
 
         scores = analyzer(series)
         total = check_score(scores)
