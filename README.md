@@ -7,6 +7,7 @@ This Python program analyzes the sentiment of tweets based on a search term give
 - **Search and Analyze Tweets**: Allows users to search for tweets containing a specific term.
 - **Sentiment Analysis**: Analyzes the sentiment of matching tweets and calculates an average sentiment score.
 - **Sentiment Classification**: Classifies the sentiment as **Positive**, **Negative**, or **Neutral** based on the score.
+- - **Username Filtering**: Uses **regex** to ignore usernames (e.g., terms following the `@` sign) that might conflict with the search term, ensuring that the analysis focuses solely on the content of the tweet.
 
 ## Requirements
 Download NLTK Resources: 
