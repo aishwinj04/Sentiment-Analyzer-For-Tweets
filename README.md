@@ -10,5 +10,5 @@ This Python program analyzes the sentiment of tweets based on a search term give
 
 ## Requirements
 Download NLTK Resources: 
-nltk.download('vader_lexicon')
-nltk.download('twitter_samples')
+- nltk.download('vader_lexicon')
+- nltk.download('twitter_samples')
